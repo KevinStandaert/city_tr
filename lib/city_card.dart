@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class CityCard extends StatelessWidget {
-  const CityCard({super.key});
+  final String name;
+  final String image;
+  final bool? checked;
+
+  const CityCard(
+      {super.key, required this.name, required this.image, this.checked});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class CityCard extends StatelessWidget {
           children: <Widget>[
             Ink.image(
               fit: BoxFit.cover,
-              image: AssetImage('assets/images/paris.webp'),
+              image: AssetImage(image),
               child: InkWell(
                 onTap: () {
                   print('Card tapped.');
@@ -40,7 +45,7 @@ class CityCard extends StatelessWidget {
                   ),
                   Row(
                     children: <Widget>[
-                      Text('Paris',
+                      Text(name,
                           style: TextStyle(
                             color: Colors.white,
                             fontSize: 30,
