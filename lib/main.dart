@@ -16,7 +16,26 @@ class CityTrip extends StatelessWidget {
           title: const Text("City trip"),
           actions: const <Widget>[Icon(Icons.more_vert)],
         ),
-        body: const Text("City trip"),
+        body: Container(
+          padding: const EdgeInsets.all(10),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              Card(
+                elevation: 5,
+                child: Container(
+                  height: 150,
+                  child: Stack(
+                    fit: StackFit.expand,
+                    children: <Widget>[
+                      Image.asset('assets/images/paris.webp', fit: BoxFit.cover)
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
