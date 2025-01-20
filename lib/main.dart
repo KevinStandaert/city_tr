@@ -23,7 +23,7 @@ class CityTrip extends StatelessWidget {
             children: <Widget>[
               Card(
                 elevation: 5,
-                child: Container(
+                child: SizedBox(
                   height: 150,
                   child: Stack(
                     fit: StackFit.expand,
