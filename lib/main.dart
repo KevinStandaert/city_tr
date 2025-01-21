@@ -1,6 +1,7 @@
+import 'package:city_tr/views/city/city.dart';
 import 'package:flutter/material.dart';
 
-import 'home.dart';
+// import 'views/home/home.dart';
 
 main() {
   runApp(CityTrip());
@@ -12,7 +13,8 @@ class CityTrip extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
+      // home: Home(),
+      home: City(),
     );
   }
 }
