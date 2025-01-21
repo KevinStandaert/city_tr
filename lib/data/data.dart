@@ -16,9 +16,9 @@ List<Activity> activities = [
       name: 'Notre Dame',
       id: 'a3',
       city: 'Paris'),
-  // Activity(
-  //     image: 'assets/images/activities/defense.webp',
-  //     name: 'La Défense',
-  //     id: 'a4',
-  //     city: 'Paris'),
+  Activity(
+      image: 'assets/images/activities/defense.webp',
+      name: 'La Défense',
+      id: 'a4',
+      city: 'Paris'),
 ];
