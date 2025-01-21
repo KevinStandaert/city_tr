@@ -13,10 +13,17 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   List cities = [
-    {'name': 'Lyon', 'image': 'assets/images/lyon.webp'},
-    {'name': 'Paris', 'image': 'assets/images/paris.webp'},
-    {'name': 'Nice', 'image': 'assets/images/nice.webp'},
+    {'name': 'Lyon', 'image': 'assets/images/lyon.webp', 'checked': false},
+    {'name': 'Paris', 'image': 'assets/images/paris.webp', 'checked': false},
+    {'name': 'Nice', 'image': 'assets/images/nice.webp', 'checked': false},
   ];
+
+  void switchChecked(city) {
+    int index = cities.indexOf(city);
+    setState(() {
+      cities[index]['checked'] = !cities[index]['checked'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,6 +43,10 @@ class _HomeState extends State<Home> {
                 return CityCard(
                   name: city['name'],
                   image: city['image'],
+                  checked: city['checked'],
+                  updateChecked: () {
+                    switchChecked(city);
+                  },
                 );
               },
             ),

@@ -3,10 +3,15 @@ import 'package:flutter/material.dart';
 class CityCard extends StatelessWidget {
   final String name;
   final String image;
-  final bool? checked;
+  final bool checked;
+  final VoidCallback updateChecked;
 
   const CityCard(
-      {super.key, required this.name, required this.image, this.checked});
+      {super.key,
+      required this.name,
+      required this.image,
+      required this.checked,
+      required this.updateChecked});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +26,7 @@ class CityCard extends StatelessWidget {
               fit: BoxFit.cover,
               image: AssetImage(image),
               child: InkWell(
-                onTap: () {
-                  print('Card tapped.');
-                },
+                onTap: updateChecked,
               ),
             ),
             Padding(
@@ -36,7 +39,7 @@ class CityCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Icon(
-                          Icons.star_border,
+                          checked ? Icons.star : Icons.star_border,
                           size: 40,
                           color: Colors.white,
                         ),
