@@ -1,18 +1,17 @@
 import 'package:city_tr/models/activity.model.dart';
+import 'package:city_tr/views/city/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
 import '../../data/data.dart' as data;
 
-
 class City extends StatefulWidget {
-  const City({super.key});
+  final List<Activity> activities = data.activities;
+  City({super.key});
 
   @override
   State<City> createState() => _CityState();
 }
 
 class _CityState extends State<City> {
-  final List<Activity> activities = data.activities;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +25,9 @@ class _CityState extends State<City> {
       body: Container(
         padding: EdgeInsets.all(10),
         child: Column(
-          children: [],
+          children: widget.activities.map((activity) {
+            return ActivityCard(activity: activity);
+          }).toList(),
         ),
       ),
     );
