@@ -1,6 +1,7 @@
 import 'package:city_tr/models/activity.model.dart';
 import 'package:city_tr/models/trip.model.dart';
 import 'package:city_tr/views/city/widgets/activity_card.dart';
+import 'package:city_tr/views/city/widgets/trip_overview.dart';
 import 'package:flutter/material.dart';
 import '../../data/data.dart' as data;
 
@@ -13,14 +14,30 @@ class City extends StatefulWidget {
 }
 
 class _CityState extends State<City> {
-  Trip mytrip = Trip(activities: [], city: 'Paris', date: DateTime.now());
+  Trip myTrip = Trip(activities: [], city: 'Paris', date: DateTime.now());
 
+  void setDate() {
+    showDatePicker(
+      context: context,
+      initialDate: DateTime.now().add(Duration(days: 1)),
+      firstDate: DateTime.now().add(Duration(days: 1)),
+      lastDate: DateTime.now().add(Duration(days: 365)),
+    ).then((newDate) {
+      if (newDate != null) {
+        setState(() {
+          myTrip.date = newDate;
+        });
+      }
+    });
+  }
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.arrow_back),
-        title: Text('Paris'),
+        title: Text('Organisation de votre voyage'),
         actions: <Widget>[
           Icon(Icons.more_vert),
         ],
@@ -28,36 +45,7 @@ class _CityState extends State<City> {
       body: Container(
         child: Column(
           children: [
-            Container(
-                padding: EdgeInsets.all(10),
-                height: 300,
-                color: Colors.white,
-                child: Column(
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text('Choisissez une date'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Selectionner une date'),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: Text('Choisissez une ville'),
-                        ),
-                        ElevatedButton(
-                          onPressed: () {},
-                          child: Text('Selectionner une ville'),
-                        ),
-                      ],
-                    )
-                  ],
-                )),
+            TripOverview(setDate: setDate, myTrip: myTrip),
             Expanded(
               child: Container(
                 padding: EdgeInsets.all(5),
