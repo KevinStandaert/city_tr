@@ -16,7 +16,7 @@ class TripOverview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
-      height: 200,
+      height: 250,
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,8 +36,10 @@ class TripOverview extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  DateFormat("dd/MM/y").format(myTrip.date),
-                  style: TextStyle(fontSize: 20),
+                  myTrip.date != null
+                      ? DateFormat("dd/MM/y").format(myTrip.date!)
+                      : 'Choisissez une date',
+                  style: TextStyle(fontSize: 15),
                 ),
               ),
               ElevatedButton(
@@ -54,7 +56,7 @@ class TripOverview extends StatelessWidget {
               Expanded(
                 child: Text(
                   'Montant par personne',
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 15),
                 ),
               ),
               Text(
