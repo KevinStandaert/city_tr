@@ -16,7 +16,7 @@ class TripOverview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(10),
-      height: 300,
+      height: 200,
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

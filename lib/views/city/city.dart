@@ -1,6 +1,8 @@
 import 'package:city_tr/models/activity.model.dart';
 import 'package:city_tr/models/trip.model.dart';
-import 'package:city_tr/views/city/widgets/activity_card.dart';
+
+import 'package:city_tr/views/city/widgets/activity_list.dart';
+import 'package:city_tr/views/city/widgets/trip_activity_list.dart';
 import 'package:city_tr/views/city/widgets/trip_overview.dart';
 import 'package:flutter/material.dart';
 import '../../data/data.dart' as data;
@@ -15,6 +17,7 @@ class City extends StatefulWidget {
 
 class _CityState extends State<City> {
   Trip myTrip = Trip(activities: [], city: 'Paris', date: DateTime.now());
+  int index = 0;
 
   void setDate() {
     showDatePicker(
@@ -31,7 +34,12 @@ class _CityState extends State<City> {
     });
   }
 
-  
+  void switchIndex(int newIndex) {
+    setState(() {
+      index = newIndex;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,25 +50,32 @@ class _CityState extends State<City> {
           Icon(Icons.more_vert),
         ],
       ),
-      body: Container(
-        child: Column(
-          children: [
-            TripOverview(setDate: setDate, myTrip: myTrip),
-            Expanded(
-              child: Container(
-                padding: EdgeInsets.all(5),
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  mainAxisSpacing: 2,
-                  crossAxisSpacing: 2,
-                  children: widget.activities
-                      .map((activity) => ActivityCard(activity: activity))
-                      .toList(),
-                ),
-              ),
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          TripOverview(
+            setDate: setDate,
+            myTrip: myTrip,
+          ),
+          Expanded(
+            child: index == 0
+                ? ActivityList(activities: widget.activities)
+                : TripActivityList(),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: index,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            label: 'Découverte',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.star),
+            label: 'Mes activités',
+          ),
+        ],
+        onTap: switchIndex,
       ),
     );
   }

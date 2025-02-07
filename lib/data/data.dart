@@ -21,4 +21,14 @@ List<Activity> activities = [
       name: 'La Défense',
       id: 'a4',
       city: 'Paris'),
+  Activity(
+      image: 'assets/images/activities/moulin.webp',
+      name: 'Le moulin rouge',
+      id: 'a5',
+      city: 'Paris'),
+  Activity(
+      image: 'assets/images/activities/versaille.webp',
+      name: 'La chateau de Versailles',
+      id: 'a6',
+      city: 'Paris'),
 ];
