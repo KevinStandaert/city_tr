@@ -4,4 +4,6 @@ class Trip {
   DateTime? date;
 
   Trip({required this.city, required this.activities, this.date});
+
+  
 }
