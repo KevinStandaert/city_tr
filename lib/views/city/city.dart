@@ -26,6 +26,12 @@ class _CityState extends State<City> {
     myTrip = Trip(activities: [], city: 'Paris', date: null);
   }
 
+  List<Activity> get tripActivities {
+    return widget.activities
+        .where((activity) => myTrip.activities.contains(activity.id))
+        .toList();
+  }
+
   void setDate() {
     showDatePicker(
       context: context,
@@ -55,6 +61,12 @@ class _CityState extends State<City> {
     });
   }
 
+  void deleteTripActivity(String id) {
+    setState(() {
+      myTrip.activities.remove(id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -78,7 +90,10 @@ class _CityState extends State<City> {
                     selectedActivites: myTrip.activities,
                     toggleActivity: toggleActivity,
                   )
-                : TripActivityList(),
+                : TripActivityList(
+                    activities: tripActivities,
+                    deleteTripActivity: deleteTripActivity,
+                  ),
           ),
         ],
       ),
