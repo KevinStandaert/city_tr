@@ -12,6 +12,17 @@ class City extends StatefulWidget {
   final List<Activity> activities = data.activities;
   City({super.key});
 
+  showContext({required BuildContext context, required List<Widget> children}) {
+    var orientation = MediaQuery.of(context).orientation;
+
+    if (orientation == Orientation.landscape) {
+      return Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch, children: children);
+    } else {
+      return Column(children: children);
+    }
+  }
+
   @override
   State<City> createState() => _CityState();
 }
@@ -85,7 +96,8 @@ class _CityState extends State<City> {
           Icon(Icons.more_vert),
         ],
       ),
-      body: Column(
+      body: widget.showContext(
+        context: context,
         children: [
           TripOverview(
             setDate: setDate,

@@ -1,4 +1,4 @@
-import 'dart:math';
+// import 'dart:math';
 
 import 'package:city_tr/models/activity.model.dart';
 import 'package:flutter/material.dart';
@@ -7,10 +7,10 @@ class TripActivityCard extends StatefulWidget {
   final Activity activity;
   final Function deleteTripActivity;
 
-  Color getColor() {
-    const colors = [Colors.blue, Colors.red];
-    return colors[Random().nextInt(2)];
-  }
+  // Color getColor() {
+  //   const colors = [Colors.blue, Colors.red];
+  //   return colors[Random().nextInt(2)];
+  // }
 
   const TripActivityCard(
       {required Key key, required this.activity, required this.deleteTripActivity}) : super(key: key);
@@ -22,11 +22,11 @@ class TripActivityCard extends StatefulWidget {
 class _TripActivityCardState extends State<TripActivityCard> {
   late Color color;
 
-  @override
-  void initState() {
-    color = widget.getColor();
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   color = widget.getColor();
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
