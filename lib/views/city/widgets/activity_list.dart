@@ -1,4 +1,4 @@
-import 'package:city_tr/models/activity.model.dart';
+import 'package:city_tr/models/activity_model.dart';
 import 'package:city_tr/views/city/widgets/activity_card.dart';
 import 'package:flutter/material.dart';
 

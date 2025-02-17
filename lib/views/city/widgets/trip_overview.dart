@@ -1,4 +1,4 @@
-import 'package:city_tr/models/trip.model.dart';
+import 'package:city_tr/models/trip_model.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 

@@ -1,9 +1,9 @@
-import 'package:city_tr/views/city/city.dart';
+import './views/city/city_view.dart';
 import 'package:flutter/material.dart';
 
 import 'widgets/data.dart';
 
-// import 'views/home/home.dart';
+import './views/home/home_view.dart';
 
 main() {
   runApp(CityTrip());
@@ -32,11 +32,10 @@ class CityTrip extends StatelessWidget {
           ),
         ),
       ),
-
       debugShowCheckedModeBanner: false,
-      // home: Home(),
       home: Data(
-        child: City(),
+        // child: HomeView(),
+        child: CityView(),
       ),
     );
   }

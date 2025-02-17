@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/data.dart' as data;
-import '../models/activity.model.dart';
+import '../models/activity_model.dart';
 
 class Data extends InheritedWidget {
   final List<Activity> activities = data.activities;

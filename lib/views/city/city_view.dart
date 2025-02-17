@@ -1,5 +1,5 @@
-import 'package:city_tr/models/activity.model.dart';
-import 'package:city_tr/models/trip.model.dart';
+import 'package:city_tr/models/activity_model.dart';
+import 'package:city_tr/models/trip_model.dart';
 import '../../widgets/data.dart';
 
 import 'package:city_tr/views/city/widgets/activity_list.dart';
@@ -8,9 +8,9 @@ import 'package:city_tr/views/city/widgets/trip_overview.dart';
 import 'package:flutter/material.dart';
 import '../../data/data.dart' as data;
 
-class City extends StatefulWidget {
+class CityView extends StatefulWidget {
   final List<Activity> activities = data.activities;
-  City({super.key});
+  CityView({super.key});
 
   showContext({required BuildContext context, required List<Widget> children}) {
     var orientation = MediaQuery.of(context).orientation;
@@ -24,10 +24,10 @@ class City extends StatefulWidget {
   }
 
   @override
-  State<City> createState() => _CityState();
+  State<CityView> createState() => _CityState();
 }
 
-class _CityState extends State<City> {
+class _CityState extends State<CityView> {
   late Trip myTrip;
   late int index;
   late List<Activity> activities;
