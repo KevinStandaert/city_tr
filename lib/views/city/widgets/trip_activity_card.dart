@@ -35,7 +35,7 @@ class _TripActivityCardState extends State<TripActivityCard> {
         leading: CircleAvatar(
           backgroundImage: AssetImage(widget.activity.image),
         ),
-        title: Text(widget.activity.name, style: TextStyle(color: color)),
+        title: Text(widget.activity.name, style: Theme.of(context).textTheme.titleMedium),
         subtitle: Text(widget.activity.city),
         trailing: IconButton(
           icon: Icon(

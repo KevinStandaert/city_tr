@@ -1,5 +1,6 @@
 import 'package:city_tr/models/activity.model.dart';
 import 'package:city_tr/models/trip.model.dart';
+import '../../widgets/data.dart';
 
 import 'package:city_tr/views/city/widgets/activity_list.dart';
 import 'package:city_tr/views/city/widgets/trip_activity_list.dart';
@@ -18,12 +19,19 @@ class City extends StatefulWidget {
 class _CityState extends State<City> {
   late Trip myTrip;
   late int index;
+  late List<Activity> activities;
 
   @override
   void initState() {
     super.initState();
     index = 0;
     myTrip = Trip(activities: [], city: 'Paris', date: null);
+  }
+
+  @override
+  didChangeDependencies() {
+    super.didChangeDependencies();
+    activities = Data.of(context).activities;
   }
 
   List<Activity> get tripActivities {

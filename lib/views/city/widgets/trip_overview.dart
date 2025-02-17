@@ -44,6 +44,7 @@ class TripOverview extends StatelessWidget {
               ),
               ElevatedButton(
                 onPressed: setDate,
+                style: Theme.of(context).elevatedButtonTheme.style,
                 child: Text('Selectionner une date'),
               ),
             ],
