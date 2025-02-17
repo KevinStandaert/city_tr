@@ -20,7 +20,13 @@ class CityCard extends StatelessWidget {
               fit: BoxFit.cover,
               image: AssetImage(city.image),
               child: InkWell(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    '/city',
+                    arguments: city
+                  );
+                },
               ),
             ),
             Positioned(

@@ -1,5 +1,6 @@
 import 'package:city_tr/models/activity_model.dart';
 import 'package:city_tr/models/trip_model.dart';
+import '../../models/city_model.dart';
 import '../../widgets/data.dart';
 
 import 'package:city_tr/views/city/widgets/activity_list.dart';
@@ -10,7 +11,10 @@ import '../../data/data.dart' as data;
 
 class CityView extends StatefulWidget {
   final List<Activity> activities = data.activities;
-  CityView({super.key});
+
+  CityView({
+    super.key,
+  });
 
   showContext({required BuildContext context, required List<Widget> children}) {
     var orientation = MediaQuery.of(context).orientation;
@@ -88,9 +92,10 @@ class _CityState extends State<CityView> {
 
   @override
   Widget build(BuildContext context) {
+    final City city = ModalRoute.of(context)!.settings.arguments as City;
+
     return Scaffold(
       appBar: AppBar(
-        leading: Icon(Icons.arrow_back),
         title: Text('Organisation de votre voyage'),
         actions: <Widget>[
           Icon(Icons.more_vert),
@@ -100,6 +105,7 @@ class _CityState extends State<CityView> {
         context: context,
         children: [
           TripOverview(
+            cityName: city.name,
             setDate: setDate,
             myTrip: myTrip,
           ),

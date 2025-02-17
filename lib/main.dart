@@ -1,12 +1,15 @@
-import './views/city/city_view.dart';
+import 'package:city_tr/views/404/not_found.dart';
 import 'package:flutter/material.dart';
 
+import 'views/city/city_view.dart';
 import 'widgets/data.dart';
 
 import './views/home/home_view.dart';
 
 main() {
-  runApp(CityTrip());
+  runApp(Data(
+    child: CityTrip(),
+  ));
 }
 
 class CityTrip extends StatelessWidget {
@@ -33,10 +36,17 @@ class CityTrip extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      home: Data(
-        // child: HomeView(),
-        child: CityView(),
-      ),
+      routes: {
+        '/': (context) => HomeView(),
+        '/city': (context) => CityView(),
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (context) {
+            return NotFound();
+          },
+        );
+      },
     );
   }
 }
