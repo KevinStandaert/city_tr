@@ -1,5 +1,6 @@
 import 'package:city_tr/models/activity_model.dart';
 import 'package:city_tr/models/trip_model.dart';
+import 'package:city_tr/views/home/home_view.dart';
 import '../../models/city_model.dart';
 import '../../widgets/data.dart';
 
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import '../../data/data.dart' as data;
 
 class CityView extends StatefulWidget {
+  static const String routeName = '/city';
   final List<Activity> activities = data.activities;
 
   CityView({
@@ -98,6 +100,47 @@ class _CityState extends State<CityView> {
     });
   }
 
+  void saveTrip() async {
+    final result = await showDialog(
+      context: context,
+      builder: (context) {
+        return SimpleDialog(
+          title: Text(
+            'Voulez vous sauvegarder?',
+            textAlign: TextAlign.center,
+          ),
+          contentPadding: EdgeInsets.all(20),
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context, 'cancel');
+                  },
+                  child: Text('Annuler'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context, 'save');
+                  },
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: Theme.of(context).primaryColor),
+                  child: Text(
+                    'Sauvegarder',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ],
+            )
+          ],
+        );
+      },
+    );
+    print(result);
+    if (mounted) Navigator.pushNamed(context, HomeView.routeName);
+  }
+
   @override
   Widget build(BuildContext context) {
     final City city = ModalRoute.of(context)!.settings.arguments as City;
@@ -131,6 +174,10 @@ class _CityState extends State<CityView> {
                   ),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: saveTrip,
+        child: Icon(Icons.card_travel),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
