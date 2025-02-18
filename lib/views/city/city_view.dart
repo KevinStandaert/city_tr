@@ -55,6 +55,14 @@ class _CityState extends State<CityView> {
         .toList();
   }
 
+  double get amount {
+    return myTrip.activities.fold(0.0, (prev, element) {
+      var activity =
+          widget.activities.firstWhere((activity) => activity.id == element);
+      return activity.price + prev;
+    });
+  }
+
   void setDate() {
     showDatePicker(
       context: context,
@@ -108,6 +116,7 @@ class _CityState extends State<CityView> {
             cityName: city.name,
             setDate: setDate,
             myTrip: myTrip,
+            amount: amount,
           ),
           Expanded(
             child: index == 0

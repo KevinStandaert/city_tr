@@ -21,11 +21,7 @@ class CityCard extends StatelessWidget {
               image: AssetImage(city.image),
               child: InkWell(
                 onTap: () {
-                  Navigator.pushNamed(
-                    context,
-                    '/city',
-                    arguments: city
-                  );
+                  Navigator.pushNamed(context, '/city', arguments: city);
                 },
               ),
             ),
