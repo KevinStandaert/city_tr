@@ -13,7 +13,10 @@ class TripActivityCard extends StatefulWidget {
   // }
 
   const TripActivityCard(
-      {required Key key, required this.activity, required this.deleteTripActivity}) : super(key: key);
+      {required Key key,
+      required this.activity,
+      required this.deleteTripActivity})
+      : super(key: key);
 
   @override
   State<TripActivityCard> createState() => _TripActivityCardState();
@@ -35,14 +38,33 @@ class _TripActivityCardState extends State<TripActivityCard> {
         leading: CircleAvatar(
           backgroundImage: AssetImage(widget.activity.image),
         ),
-        title: Text(widget.activity.name, style: Theme.of(context).textTheme.titleMedium),
+        title: Text(widget.activity.name,
+            style: Theme.of(context).textTheme.titleMedium),
         subtitle: Text(widget.activity.city),
         trailing: IconButton(
           icon: Icon(
             Icons.delete,
             color: Colors.red,
           ),
-          onPressed: () => widget.deleteTripActivity(widget.activity.id),
+          onPressed: () {
+            widget.deleteTripActivity(widget.activity.id);
+            ScaffoldMessenger.of(context)
+              ..removeCurrentSnackBar()
+              ..showSnackBar(
+                SnackBar(
+                  content: Text('Activité supprimée'),
+                  backgroundColor: Colors.red,
+                  duration: Duration(seconds: 3),
+                  action: SnackBarAction(
+                    label: 'Annuler',
+                    textColor: Colors.white,
+                    onPressed: () {
+                      print('Undo');
+                    },
+                  ),
+                ),
+              );
+          },
         ),
       ),
     );
