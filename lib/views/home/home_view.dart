@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../models/city_model.dart';
+import '../../widgets/city_trip_drawer.dart';
 import 'widgets/city_card.dart';
 
 class HomeView extends StatefulWidget {
@@ -24,10 +25,9 @@ class _HomeState extends State<HomeView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.home),
         title: const Text("City trip"),
-        actions: const <Widget>[Icon(Icons.more_vert)],
       ),
+      drawer: CityTripDrawer(),
       body: Container(
         padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(

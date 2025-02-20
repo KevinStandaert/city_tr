@@ -1,12 +1,13 @@
-import 'package:city_tr/models/activity_model.dart';
-import 'package:city_tr/models/trip_model.dart';
-import 'package:city_tr/views/home/home_view.dart';
+import '../../models/activity_model.dart';
+import '../../models/trip_model.dart';
+import '../home/home_view.dart';
+import '../../widgets/city_trip_drawer.dart';
 import '../../models/city_model.dart';
 import '../../widgets/data.dart';
 
-import 'package:city_tr/views/city/widgets/activity_list.dart';
-import 'package:city_tr/views/city/widgets/trip_activity_list.dart';
-import 'package:city_tr/views/city/widgets/trip_overview.dart';
+import 'widgets/activity_list.dart';
+import 'widgets/trip_activity_list.dart';
+import 'widgets/trip_overview.dart';
 import 'package:flutter/material.dart';
 import '../../data/data.dart' as data;
 
@@ -148,10 +149,8 @@ class _CityState extends State<CityView> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Organisation de votre voyage'),
-        actions: <Widget>[
-          Icon(Icons.more_vert),
-        ],
       ),
+      drawer: CityTripDrawer(),
       body: widget.showContext(
         context: context,
         children: [
