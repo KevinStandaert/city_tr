@@ -1,6 +1,8 @@
-import 'package:city_tr/views/404/not_found.dart';
+import 'views/404/not_found.dart';
+import 'views/trips/trips_view.dart';
 import 'package:flutter/material.dart';
 
+import 'models/city_model.dart';
 import 'views/city/city_view.dart';
 import 'widgets/data.dart';
 
@@ -37,8 +39,32 @@ class CityTrip extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => HomeView(),
-        '/city': (context) => CityView(),
+        HomeView.routeName: (context) => HomeView(),
+      },
+
+      // ignore: body_might_complete_normally_nullable
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case CityView.routeName:
+            {
+              return MaterialPageRoute(
+                builder: (context) {
+                  final City city = settings.arguments as City;
+                  return CityView(
+                    city: city,
+                  );
+                },
+              );
+            }
+          case TripsView.routeName:
+            {
+              return MaterialPageRoute(
+                builder: (context) {
+                  return TripsView();
+                },
+              );
+            }
+        }
       },
       onUnknownRoute: (settings) {
         return MaterialPageRoute(

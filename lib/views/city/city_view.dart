@@ -14,9 +14,11 @@ import '../../data/data.dart' as data;
 class CityView extends StatefulWidget {
   static const String routeName = '/city';
   final List<Activity> activities = data.activities;
+  final City city;
 
   CityView({
     super.key,
+    required this.city,
   });
 
   showContext({required BuildContext context, required List<Widget> children}) {
@@ -144,8 +146,6 @@ class _CityState extends State<CityView> {
 
   @override
   Widget build(BuildContext context) {
-    final City city = ModalRoute.of(context)!.settings.arguments as City;
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Organisation de votre voyage'),
@@ -155,7 +155,7 @@ class _CityState extends State<CityView> {
         context: context,
         children: [
           TripOverview(
-            cityName: city.name,
+            cityName: widget.city.name,
             setDate: setDate,
             myTrip: myTrip,
             amount: amount,

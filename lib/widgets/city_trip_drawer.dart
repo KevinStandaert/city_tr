@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../views/trips/trips_view.dart';
 import '../views/home/home_view.dart';
 
 class CityTripDrawer extends StatelessWidget {
@@ -38,7 +39,9 @@ class CityTripDrawer extends StatelessWidget {
         ListTile(
           leading: Icon(Icons.flight),
           title: Text('Mes voyages'),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, TripsView.routeName);
+          },
         ),
       ]),
     );
