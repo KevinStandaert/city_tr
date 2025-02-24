@@ -1,3 +1,4 @@
+import 'data/data.dart' as data;
 import 'views/404/not_found.dart';
 import 'views/trips/trips_view.dart';
 import 'package:flutter/material.dart';
@@ -14,9 +15,15 @@ main() {
   ));
 }
 
-class CityTrip extends StatelessWidget {
-  const CityTrip({super.key});
+class CityTrip extends StatefulWidget {
+  CityTrip({super.key});
+  final List<City> cities = data.cities;
 
+  @override
+  State<CityTrip> createState() => _CityTripState();
+}
+
+class _CityTripState extends State<CityTrip> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -39,7 +46,7 @@ class CityTrip extends StatelessWidget {
       ),
       debugShowCheckedModeBanner: false,
       routes: {
-        HomeView.routeName: (context) => HomeView(),
+        HomeView.routeName: (context) => HomeView(cities: widget.cities),
       },
 
       // ignore: body_might_complete_normally_nullable

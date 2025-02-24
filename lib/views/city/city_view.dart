@@ -9,14 +9,16 @@ import 'widgets/activity_list.dart';
 import 'widgets/trip_activity_list.dart';
 import 'widgets/trip_overview.dart';
 import 'package:flutter/material.dart';
-import '../../data/data.dart' as data;
 
 class CityView extends StatefulWidget {
   static const String routeName = '/city';
-  final List<Activity> activities = data.activities;
   final City city;
 
-  CityView({
+  List<Activity> get activities {
+    return city.activities;
+  }
+
+  const CityView({
     super.key,
     required this.city,
   });

@@ -3,7 +3,8 @@ import '../data/data.dart' as data;
 import '../models/activity_model.dart';
 
 class Data extends InheritedWidget {
-  final List<Activity> activities = data.activities;
+  final List<Activity> activities =
+      data.cities.expand((city) => city.activities).toList();
 
   Data({super.key, required super.child});
 
