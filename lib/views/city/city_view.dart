@@ -49,7 +49,11 @@ class _CityState extends State<CityView> {
   void initState() {
     super.initState();
     index = 0;
-    myTrip = Trip(activities: [], city: '', date: null);
+    myTrip = Trip(
+      activities: [],
+      city: widget.city.name,
+      date: null,
+    );
   }
 
   @override
@@ -58,17 +62,9 @@ class _CityState extends State<CityView> {
     activities = Data.of(context).activities;
   }
 
-  List<Activity> get tripActivities {
-    return widget.activities
-        .where((activity) => myTrip.activities.contains(activity.id))
-        .toList();
-  }
-
   double get amount {
     return myTrip.activities.fold(0.0, (prev, element) {
-      var activity =
-          widget.activities.firstWhere((activity) => activity.id == element);
-      return activity.price + prev;
+      return element.price + prev;
     });
   }
 
@@ -93,17 +89,17 @@ class _CityState extends State<CityView> {
     });
   }
 
-  void toggleActivity(String id) {
+  void toggleActivity(Activity activity) {
     setState(() {
-      myTrip.activities.contains(id)
-          ? myTrip.activities.remove(id)
-          : myTrip.activities.add(id);
+      myTrip.activities.contains(activity)
+          ? myTrip.activities.remove(activity)
+          : myTrip.activities.add(activity);
     });
   }
 
-  void deleteTripActivity(String id) {
+  void deleteTripActivity(Activity activity) {
     setState(() {
-      myTrip.activities.remove(id);
+      myTrip.activities.remove(activity);
     });
   }
 
@@ -144,8 +140,25 @@ class _CityState extends State<CityView> {
         );
       },
     );
-
-    if (result == 'save') {
+    if (myTrip.date == null) {
+      showDialog(
+        // ignore: use_build_context_synchronously
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+              title: const Text('Attention !'),
+              content: const Text('Vous n\'avez pas encore choisi de date'),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    if (mounted) Navigator.pop(context);
+                  },
+                  child: Text('0k'),
+                )
+              ]);
+        },
+      );
+    } else if (result == 'save') {
       widget.addTrip(myTrip);
       if (mounted) Navigator.pushNamed(context, HomeView.routeName);
     }
@@ -175,7 +188,7 @@ class _CityState extends State<CityView> {
                     toggleActivity: toggleActivity,
                   )
                 : TripActivityList(
-                    activities: tripActivities,
+                    activities: myTrip.activities,
                     deleteTripActivity: deleteTripActivity,
                   ),
           ),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class ActivityList extends StatelessWidget {
   final List<Activity> activities;
-  final List<String> selectedActivites;
+  final List<Activity> selectedActivites;
   final Function toggleActivity;
 
   const ActivityList(
@@ -25,9 +25,9 @@ class ActivityList extends StatelessWidget {
             .map(
               (activity) => ActivityCard(
                 activity: activity,
-                isSelected: selectedActivites.contains(activity.id),
+                isSelected: selectedActivites.contains(activity),
                 toggleActivity: () {
-                  toggleActivity(activity.id);
+                  toggleActivity(activity);
                 },
               ),
             )
