@@ -49,7 +49,7 @@ class _CityState extends State<CityView> {
   void initState() {
     super.initState();
     index = 0;
-    myTrip = Trip(activities: [], city: 'Paris', date: null);
+    myTrip = Trip(activities: [], city: '', date: null);
   }
 
   @override
@@ -144,7 +144,7 @@ class _CityState extends State<CityView> {
         );
       },
     );
-  
+
     if (result == 'save') {
       widget.addTrip(myTrip);
       if (mounted) Navigator.pushNamed(context, HomeView.routeName);
