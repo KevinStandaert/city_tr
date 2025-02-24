@@ -1,3 +1,5 @@
+import 'package:city_tr/views/trip/trip_view.dart';
+
 import 'data/data.dart' as data;
 import 'models/trip_model.dart';
 import 'views/404/not_found.dart';
@@ -78,6 +80,23 @@ class _CityTripState extends State<CityTrip> {
               return MaterialPageRoute(
                 builder: (context) {
                   return TripsView(trips: trips);
+                },
+              );
+            }
+          case TripView.routeName:
+            {
+              return MaterialPageRoute(
+                builder: (context) {
+                  String tripId =
+                      (settings.arguments as Map<String, String>)['tripId']!;
+                  String cityName =
+                      (settings.arguments as Map<String, String>)['cityName']!;
+
+                  return TripView(
+                    trip: trips.firstWhere((trip) => trip.id == tripId),
+                    city: widget.cities
+                        .firstWhere((city) => city.name == cityName),
+                  );
                 },
               );
             }
