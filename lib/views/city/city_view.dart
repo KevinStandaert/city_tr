@@ -13,6 +13,7 @@ import 'package:flutter/material.dart';
 class CityView extends StatefulWidget {
   static const String routeName = '/city';
   final City city;
+  final Function addTrip;
 
   List<Activity> get activities {
     return city.activities;
@@ -21,6 +22,7 @@ class CityView extends StatefulWidget {
   const CityView({
     super.key,
     required this.city,
+    required this.addTrip,
   });
 
   showContext({required BuildContext context, required List<Widget> children}) {
@@ -142,8 +144,11 @@ class _CityState extends State<CityView> {
         );
       },
     );
-    print(result);
-    if (mounted) Navigator.pushNamed(context, HomeView.routeName);
+  
+    if (result == 'save') {
+      widget.addTrip(myTrip);
+      if (mounted) Navigator.pushNamed(context, HomeView.routeName);
+    }
   }
 
   @override

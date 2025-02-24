@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../models/city_model.dart';
-import '../../city/city_view.dart';
 
 class CityCard extends StatelessWidget {
   final City city;
@@ -22,11 +21,10 @@ class CityCard extends StatelessWidget {
               image: AssetImage(city.image),
               child: InkWell(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushNamed(
                     context,
-                    MaterialPageRoute(
-                      builder: (context) => CityView(city: city),
-                    ),
+                    '/city',
+                    arguments: city,
                   );
                 },
               ),

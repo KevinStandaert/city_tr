@@ -1,4 +1,5 @@
 import 'data/data.dart' as data;
+import 'models/trip_model.dart';
 import 'views/404/not_found.dart';
 import 'views/trips/trips_view.dart';
 import 'package:flutter/material.dart';
@@ -24,6 +25,14 @@ class CityTrip extends StatefulWidget {
 }
 
 class _CityTripState extends State<CityTrip> {
+  List<Trip> trips = [];
+
+  void addTrip(Trip trip) {
+    setState(() {
+      trips.add(trip);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -59,6 +68,7 @@ class _CityTripState extends State<CityTrip> {
                   final City city = settings.arguments as City;
                   return CityView(
                     city: city,
+                    addTrip: addTrip,
                   );
                 },
               );
