@@ -38,7 +38,7 @@ class TripOverview extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Row(

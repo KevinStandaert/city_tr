@@ -21,14 +21,14 @@ class CityTripDrawer extends StatelessWidget {
               end: Alignment.bottomRight,
             ),
           ),
-          child: Text(
+          child: const Text(
             'City trip',
             style: TextStyle(color: Colors.white, fontSize: 30),
           ),
         ),
         ListTile(
-          leading: Icon(Icons.home),
-          title: Text('Accueil'),
+          leading: const Icon(Icons.home),
+          title: const Text('Accueil'),
           onTap: () {
             Navigator.pushNamed(context, HomeView.routeName);
           },
@@ -37,8 +37,8 @@ class CityTripDrawer extends StatelessWidget {
           color: Theme.of(context).primaryColor,
         ),
         ListTile(
-          leading: Icon(Icons.flight),
-          title: Text('Mes voyages'),
+          leading: const Icon(Icons.flight),
+          title: const Text('Mes voyages'),
           onTap: () {
             Navigator.pushNamed(context, TripsView.routeName);
           },

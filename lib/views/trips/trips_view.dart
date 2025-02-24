@@ -22,8 +22,8 @@ class _TripsViewState extends State<TripsView> {
       length: 2,
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Mes voyages'),
-          bottom: TabBar(
+          title: const Text('Mes voyages'),
+          bottom: const TabBar(
             indicatorColor: Colors.white,
             indicatorPadding: EdgeInsets.all(5),
             labelColor: Colors.white,
@@ -37,7 +37,7 @@ class _TripsViewState extends State<TripsView> {
             ],
           ),
         ),
-        drawer: CityTripDrawer(),
+        drawer: const CityTripDrawer(),
         body: TabBarView(
           children: [
             TripList(

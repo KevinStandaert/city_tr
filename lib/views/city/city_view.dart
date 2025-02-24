@@ -112,11 +112,11 @@ class _CityState extends State<CityView> {
       context: context,
       builder: (context) {
         return SimpleDialog(
-          title: Text(
+          title: const Text(
             'Voulez vous sauvegarder?',
             textAlign: TextAlign.center,
           ),
-          contentPadding: EdgeInsets.all(20),
+          contentPadding: const EdgeInsets.all(20),
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -133,7 +133,7 @@ class _CityState extends State<CityView> {
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Theme.of(context).primaryColor),
-                  child: Text(
+                  child: const Text(
                     'Sauvegarder',
                     style: TextStyle(color: Colors.white),
                   ),
@@ -155,7 +155,7 @@ class _CityState extends State<CityView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Organisation de votre voyage'),
+        title: const Text('Organisation de votre voyage'),
       ),
       drawer: CityTripDrawer(),
       body: widget.showContext(
@@ -183,16 +183,16 @@ class _CityState extends State<CityView> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: saveTrip,
-        child: Icon(Icons.card_travel),
+        child: const Icon(Icons.card_travel),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: index,
         items: [
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.map),
             label: 'Découverte',
           ),
-          BottomNavigationBarItem(
+          const BottomNavigationBarItem(
             icon: Icon(Icons.star),
             label: 'Mes activités',
           ),
