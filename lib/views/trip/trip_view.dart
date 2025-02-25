@@ -1,4 +1,5 @@
 import 'package:city_tr/models/trip_model.dart';
+import 'package:city_tr/views/trip/widgets/trip_activities.dart';
 import 'package:city_tr/views/trip/widgets/trip_city_bar.dart';
 import 'package:flutter/material.dart';
 
@@ -26,10 +27,7 @@ class _TripViewState extends State<TripView> {
               TripCityBar(
                 city: widget.city,
               ),
-              Container(
-                height: 800,
-                color: Colors.amber,
-              ),
+              TripActivities(activities: widget.trip.activities),
             ],
           ),
         ),
