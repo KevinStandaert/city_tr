@@ -1,4 +1,5 @@
 import 'package:city_tr/providers/city_provider.dart';
+import 'package:city_tr/providers/trip_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../models/activity_model.dart';
@@ -135,30 +136,34 @@ class _CityState extends State<CityView> {
         );
       },
     );
-    
+
     if (myTrip.date == null) {
-      showDialog(
-        // ignore: use_build_context_synchronously
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: const Text('Attention !'),
-            content: const Text('Vous n\'avez pas encore choisi de date'),
-            actions: [
-              ElevatedButton(
-                onPressed: () {
-                  if (mounted) Navigator.pop(context);
-                },
-                child: Text('0k'),
-              )
-            ],
-          );
-        },
-      );
+      if (mounted) {
+        showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: const Text('Attention !'),
+              content: const Text('Vous n\'avez pas encore choisi de date'),
+              actions: [
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('0k'),
+                )
+              ],
+            );
+          },
+        );
+      }
     } else if (result == 'save') {
-      // widget.addTrip(myTrip);
       myTrip.city = cityName;
-      if (mounted) Navigator.pushNamed(context, HomeView.routeName);
+
+      if (mounted) {
+        Provider.of<TripProvider>(context, listen: false).addTrip(myTrip);
+        Navigator.pushNamed(context, HomeView.routeName);
+      }
     }
   }
 

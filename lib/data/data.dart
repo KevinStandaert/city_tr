@@ -142,11 +142,13 @@ List<Trip> trips = [
   Trip(
     activities: [
       Activity(
-          image: 'assets/images/activities/louvre.webp',
-          name: 'Le Louvre',
-          id: 'a1',
-          city: 'Paris',
-          price: 25.00),
+        image: 'assets/images/activities/louvre.webp',
+        name: 'Le Louvre',
+        id: 'a1',
+        city: 'Paris',
+        price: 25.00,
+        status: ActivityStatus.done,
+      ),
       Activity(
           image: 'assets/images/activities/chaumont.webp',
           name: 'Les buttes Chaumont',
