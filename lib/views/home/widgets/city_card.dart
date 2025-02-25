@@ -24,7 +24,7 @@ class CityCard extends StatelessWidget {
                   Navigator.pushNamed(
                     context,
                     '/city',
-                    arguments: city,
+                    arguments: city.name,
                   );
                 },
               ),

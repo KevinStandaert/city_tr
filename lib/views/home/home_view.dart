@@ -1,13 +1,17 @@
+import 'package:city_tr/models/city_model.dart';
+import 'package:city_tr/providers/city_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import '../../models/city_model.dart';
 import '../../widgets/city_trip_drawer.dart';
 import 'widgets/city_card.dart';
 
 class HomeView extends StatefulWidget {
   static const String routeName = '/';
-  final List<City> cities;
-  const HomeView({super.key, required this.cities});
+
+  const HomeView({
+    super.key,
+  });
 
   @override
   State<HomeView> createState() {
@@ -18,6 +22,7 @@ class HomeView extends StatefulWidget {
 class _HomeState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
+    List<City> cities = Provider.of<CityProvider>(context).cities;
     return Scaffold(
       appBar: AppBar(
         title: const Text("City trip"),
@@ -28,15 +33,13 @@ class _HomeState extends State<HomeView> {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              ...widget.cities.map(
-                (city) {
-                  return CityCard(
-                    city: city,
-                  );
-                },
-              ),
-            ],
+            children: cities.map(
+              (city) {
+                return CityCard(
+                  city: city,
+                );
+              },
+            ).toList(),
           ),
         ),
       ),
